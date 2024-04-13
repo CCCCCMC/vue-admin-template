@@ -76,6 +76,39 @@ export const constantRoutes = [
       }
     ]
   },
+  {
+          path: '/brand',
+          component: Layout,
+          redirect: '/brand/list',
+          name: 'Example',
+          meta: { title: '品牌管理', icon: 'el-icon-s-help' },
+          children: [{
+                  path: 'list',
+                  name: 'list',
+                  component: () =>
+                      import ('@/views/brand/index'),
+                  meta: { title: '品牌列表', icon: 'table' }
+              },
+              {
+                  path: 'add',
+                  name: 'add',
+                  component: () =>
+                      import ('@/views/brand/add'),
+                  meta: { title: '添加品牌', icon: 'tree' }
+              },
+              // 此路由用于编辑品牌信息，:id用于接收需要被修改的品牌id
+              {
+                  // /brand/edit/123
+                  path: 'edit/:id',
+                  name: 'edit',
+                  // 此路由不需要在页面上显示
+                  hidden: true,
+                  component: () =>
+                      import ('@/views/brand/add'),
+                  meta: { title: '编辑品牌', icon: 'tree' }
+              }
+          ]
+      },
 
   {
     path: '/form',
