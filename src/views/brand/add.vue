@@ -22,10 +22,7 @@
         <el-input v-model="form.letter"></el-input>
       </el-form-item>
 
-      <!--               分类ID                -->
-      <el-form-item label="所属分类">
-        <el-cascader :props="props" v-model="form.categoryId"></el-cascader>
-      </el-form-item>
+      
 
       <el-form-item>
         <el-button type="primary" @click="onSubmit">立即创建</el-button>
@@ -34,7 +31,7 @@
   </div>
 </template>
 <script>
-import {getCategories,getCategoriesByParentId} from '@/api/category'
+//import {getCategories,getCategoriesByParentId} from '@/api/category'
 import {addBrand,getBrandById} from '@/api/brand'
 export default {
   data() {
@@ -43,7 +40,7 @@ export default {
         name:"",
         letter:"",
         image: "",
-        categoryId:"",
+        //categoryId:"",
       },
       props: {
         lazy: true,
@@ -84,41 +81,7 @@ export default {
     },
     // 图片上传之前调用的方法
     beforeAvatarUpload() {},
-    // 加载分类
-    lazyLoad(node, resolve) {
-      const { level } = node;
-      // 如果level为0则加载顶级分类
-      if(level == 0){
-        getCategories().then(res=>{
-          // 后端传回的数据的key为name，当前组件需要的key为label
-          // 通过map方法处理传回的每个元素，生成新的数组
-          const categories = res.data.items.map(item=>{
-            return {
-              value: item.id,
-              label: item.name,
-              leaf: false,
-            }
-          })
-          // 将处理后的数据显示到界面
-          resolve(categories);
-        })
-      // 子节点
-      }else{
-        getCategoriesByParentId(node.data.value).then(res=>{
-          // 后端传回的数据的key为name，当前组件需要的key为label
-          // 通过map方法处理传回的每个元素，生成新的数组
-          const categories = res.data.items.map(item=>{
-            return {
-              value: item.id,
-              label: item.name,
-              // 当level大于2时，已经是最后一级了
-              leaf: level >= 2,
-            }
-          })
-          // 将处理后的数据显示到界面
-          resolve(categories);
-        })
-      }
+    
       /*
       elementui官方示例代码
       setTimeout(() => {
@@ -131,7 +94,7 @@ export default {
         resolve(nodes);
       }, 1000);
       */
-    },
+    
   },
 };
 </script>

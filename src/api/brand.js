@@ -16,7 +16,7 @@ export function getBrandById(id) {
     })
 }
 
-export function addBrand(form) {
+/*export function addBrand(form) {
     // 默认取得了三级分类中的每个分类的id，只需传最后一级的id即可
     form.categoryId = form.categoryId[2]
     return request({
@@ -33,4 +33,4 @@ export function editBrand(form) {
         method: 'post',
         params: form
     })
-}
+}*/
