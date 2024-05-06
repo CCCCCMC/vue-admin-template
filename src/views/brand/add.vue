@@ -22,7 +22,7 @@
         <el-input v-model="form.letter"></el-input>
       </el-form-item>
 
-      
+
 
       <el-form-item>
         <el-button type="primary" @click="onSubmit">立即创建</el-button>
@@ -81,7 +81,7 @@ export default {
     },
     // 图片上传之前调用的方法
     beforeAvatarUpload() {},
-    
+
       /*
       elementui官方示例代码
       setTimeout(() => {
@@ -94,34 +94,17 @@ export default {
         resolve(nodes);
       }, 1000);
       */
-    
+
   },
 };
 </script>
 
 
 <style>
-.avatar-uploader .el-upload {
-  border: 1px dashed #d9d9d9;
-  border-radius: 6px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-.avatar-uploader .el-upload:hover {
-  border-color: #409eff;
-}
-.avatar-uploader-icon {
-  font-size: 28px;
-  color: #8c939d;
-  width: 178px;
-  height: 178px;
-  line-height: 178px;
-  text-align: center;
-}
-.avatar {
-  width: 178px;
-  height: 178px;
-  display: block;
+.button-container {
+  display: flex; /* 使用 Flex 布局 */
+  justify-content: space-between; /* 将两个按钮放置在容器两端 */
+  align-items: center; /* 垂直居中对齐 */
+  margin-top: 20px; /* 根据需要设置上边距 */
 }
 </style>

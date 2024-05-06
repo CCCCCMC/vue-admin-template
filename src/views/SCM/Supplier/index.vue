@@ -8,7 +8,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="名称" width="180">
+      <el-table-column label="名称" width="280">
         <template slot-scope="scope">
           <el-popover trigger="hover" placement="top">
             <p>首字母: {{ scope.row.letter }}</p>
@@ -19,7 +19,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="contactPerson" width="180">
+      <el-table-column label="contactPerson" width="280">
         <template slot-scope="scope">
           <el-popover trigger="hover" placement="top">
             <p>首字母: {{ scope.row.letter }}</p>
@@ -30,7 +30,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="contactEmail" width="180">
+      <el-table-column label="contactEmail" width="280">
         <template slot-scope="scope">
           <el-popover trigger="hover" placement="top">
             <p>首字母: {{ scope.row.letter }}</p>
@@ -40,9 +40,9 @@
           </el-popover>
         </template>
       </el-table-column>
-      
+
     </el-table>
-    
+
   </div>
 </template>
 
@@ -68,11 +68,12 @@ export default {
       this.pageSize = response.data.items.size;
       // 网络请求成功后，显示分页
       this.isShow = true;
+      console.log("table data:", this.tableData);
     });
   },
   methods: {
     changePage(pageNum) {
-      getBrands(pageNum).then((response) => {
+      getSuppliers(pageNum).then((response) => {
         this.tableData = response.data.items.records;
     });
     },

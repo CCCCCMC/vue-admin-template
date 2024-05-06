@@ -127,6 +127,24 @@ export const constantRoutes = [
                 component: () =>
                     import ('@/views/brand/index'),
                 meta: { title: '品牌列表', icon: 'table' }
+            },
+            {
+                path: 'add',
+                name: 'add',
+                component: () =>
+                    import ('@/views/brand/add'),
+                meta: { title: '添加品牌', icon: 'tree' }
+            },
+            // 此路由用于编辑品牌信息，:id用于接收需要被修改的品牌id
+            {
+                // /brand/edit/123
+                path: 'edit/:id',
+                name: 'edit',
+                // 此路由不需要在页面上显示
+                hidden: true,
+                component: () =>
+                    import ('@/views/brand/add'),
+                meta: { title: '编辑品牌', icon: 'tree' }
             }
         ]
     },
@@ -151,6 +169,25 @@ export const constantRoutes = [
           component: () => import('@/views/PRM/MaterialRequirement/index'),
           name: '物料需求计划',
           meta: { title: '物料需求计划' }
+        },
+        {
+          path: 'add',
+          name: 'add',
+          hidden: true,
+          component: () =>
+            import ('@/views/PRM/MaterialRequirement/add'),
+          meta: { title: '添加物料需求计划', icon: 'tree' }
+        },
+        // 此路由用于编辑品牌信息，:id用于接收需要被修改的品牌id
+        {
+          // /brand/edit/123
+          path: 'edit/:id',
+          name: 'edit',
+          // 此路由不需要在页面上显示
+          hidden: true,
+          component: () =>
+            import ('@/views/PRM/MaterialRequirement/add'),
+          meta: { title: '编辑物料需求计划', icon: 'tree' }
         }
       ]
     },
@@ -220,10 +257,29 @@ export const constantRoutes = [
               },
               children: [
                 {
-                  path: 'Employee',
+                  path: 'list',
                   component: () => import('@/views/HRM/Employee/index'), // Parent router-view
-                  name: '档案管理',
+                  name: 'list',
                   meta: { title: '档案管理' },
+                },
+                {
+                  path: 'add',
+                  name: 'add',
+                  hidden: true,
+                  component: () =>
+                    import ('@/views/HRM/Employee/add'),
+                  meta: { title: '添加档案', icon: 'tree' }
+                },
+                // 此路由用于编辑品牌信息，:id用于接收需要被修改的品牌id
+                {
+                  // /brand/edit/123
+                  path: 'edit/:id',
+                  name: 'edit',
+                  // 此路由不需要在页面上显示
+                  hidden: true,
+                  component: () =>
+                    import ('@/views/HRM/Employee/add'),
+                  meta: { title: '编辑档案', icon: 'tree' }
                 },
                 {
                   path: 'PerformanceReview',
@@ -236,16 +292,11 @@ export const constantRoutes = [
             {
                 path: '/example',
                 component: Layout,
-                redirect: '/example/table',
+                redirect: '/example/tree',
                 name: 'Example',
                 meta: { title: 'Example', icon: 'el-icon-s-help' },
                 children: [
-                  {
-                    path: 'table',
-                    name: 'Table',
-                    component: () => import('@/views/table/index'),
-                    meta: { title: 'Table', icon: 'table' }
-                  },
+
                   {
                     path: 'tree',
                     name: 'Tree',

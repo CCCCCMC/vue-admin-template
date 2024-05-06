@@ -16,9 +16,17 @@ export function getBrandById(id) {
     })
 }
 
-/*export function addBrand(form) {
+export function DeleteBrandById(id) {
+  return request({
+    url: '/brand/delete',
+    method: 'post',
+    params: { id }
+  })
+}
+
+export function addBrand(form) {
     // 默认取得了三级分类中的每个分类的id，只需传最后一级的id即可
-    form.categoryId = form.categoryId[2]
+    //form.categoryId = form.categoryId[2]
     return request({
         url: '/brand/add',
         method: 'post',
@@ -27,10 +35,10 @@ export function getBrandById(id) {
 }
 
 export function editBrand(form) {
-    form.categoryId = form.categoryId[2]
+    //form.categoryId = form.categoryId[2]
     return request({
         url: '/brand/edit',
         method: 'post',
         params: form
     })
-}*/
+}

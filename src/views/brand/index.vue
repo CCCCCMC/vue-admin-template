@@ -33,6 +33,7 @@
         </template>
       </el-table-column>
     </el-table>
+    <div class="button-container">
     <el-pagination
       @current-change="changePage"
       v-if="isShow"
@@ -42,11 +43,17 @@
       :page-size="pageSize"
     >
     </el-pagination>
+
+      <el-button type="primary" size="mini" plain @click="handleAdd">添加</el-button>
+    </div>
+
   </div>
 </template>
 
+
+
 <script>
-import { getBrands, editBrand } from "@/api/brand.js";
+import {getBrands, editBrand, DeleteBrandById} from "@/api/brand.js";
 
 export default {
   data() {
@@ -76,8 +83,14 @@ export default {
       this.$router.push("/brand/edit/" + id);
     },
     handleDelete(id) {
-      // console.log(id);
+      console.log(id);
+      DeleteBrandById(id);
+      window.location.reload();
       // 删除
+    },
+    handleAdd() {
+      //跳转到添加页面，同时传递品牌id，方便在添加页面查询品牌信息，并显示
+      this.$router.push("/brand/add/");
     },
     changePage(pageNum) {
       getBrands(pageNum).then((response) => {
@@ -87,3 +100,12 @@ export default {
   },
 };
 </script>
+
+<style>
+.button-container {
+  display: flex; /* 使用 Flex 布局 */
+  justify-content: flex-start; /* 将两个按钮放置在容器两端 */
+  align-items: center; /* 垂直居中对齐 */
+  margin-top: 20px; /* 根据需要设置上边距 */
+}
+</style>
