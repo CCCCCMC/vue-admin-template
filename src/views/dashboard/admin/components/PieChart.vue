@@ -47,26 +47,26 @@ export default {
       this.chart.setOption({
         tooltip: {
           trigger: 'item',
-          formatter: '{a} <br/>{b} : {c} ({d}%)'
+          formatter: '{b} : {c} ({d}%)' // 显示国家名称和销售额
         },
         legend: {
           left: 'center',
           bottom: '10',
-          data: ['Industries', 'Technology', 'Forex', 'Gold', 'Forecasts']
+          data: ['美国', '中国', '日本', '德国', '英国'] // 根据实际国家名称修改
         },
         series: [
           {
-            name: 'WEEKLY WRITE ARTICLES',
+            name: 'Sales by Country',
             type: 'pie',
             roseType: 'radius',
             radius: [15, 95],
             center: ['50%', '38%'],
             data: [
-              { value: 320, name: 'Industries' },
-              { value: 240, name: 'Technology' },
-              { value: 149, name: 'Forex' },
-              { value: 100, name: 'Gold' },
-              { value: 59, name: 'Forecasts' }
+              { value: 320, name: '美国' },
+              { value: 240, name: '中国' },
+              { value: 149, name: '日本' },
+              { value: 100, name: '德国' },
+              { value: 59, name: '英国' }
             ],
             animationEasing: 'cubicInOut',
             animationDuration: 2600
@@ -74,6 +74,7 @@ export default {
         ]
       })
     }
+
   }
 }
 </script>

@@ -51,70 +51,10 @@ export const constantRoutes = [
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: '主界面', icon: 'dashboard' }
     }]
   },
 
-
-
-  {
-    path: '/nested',
-    component: Layout,
-    redirect: '/nested/menu1',
-    name: '项目管理',
-    meta: {
-      title: '项目管理',
-      icon: 'nested'
-    },
-    children: [
-      {
-        path: '计划管理',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'ProdcutionPlan',
-        meta: { title: '计划管理' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
-          }
-        ]
-      },
-      {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        name: 'Menu2',
-        meta: { title: 'menu2' }
-      }
-    ]
-  },
 {
         path: '/brand',
         component: Layout,
@@ -191,6 +131,67 @@ export const constantRoutes = [
         }
       ]
     },
+
+
+
+  {
+    path: '/nested',
+    component: Layout,
+    redirect: '/nested/menu1',
+    name: '项目管理',
+    meta: {
+      title: '项目管理',
+      icon: 'nested'
+    },
+    children: [
+      {
+        path: '计划管理',
+        component: () => import('@/views/nested/menu1/index'), // Parent router-view
+        name: 'ProdcutionPlan',
+        meta: { title: '计划管理' },
+        children: [
+          {
+            path: 'menu1-1',
+            component: () => import('@/views/nested/menu1/menu1-1'),
+            name: 'Menu1-1',
+            meta: { title: 'Menu1-1' }
+          },
+          {
+            path: 'menu1-2',
+            component: () => import('@/views/nested/menu1/menu1-2'),
+            name: 'Menu1-2',
+            meta: { title: 'Menu1-2' },
+            children: [
+              {
+                path: 'menu1-2-1',
+                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
+                name: 'Menu1-2-1',
+                meta: { title: 'Menu1-2-1' }
+              },
+              {
+                path: 'menu1-2-2',
+                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
+                name: 'Menu1-2-2',
+                meta: { title: 'Menu1-2-2' }
+              }
+            ]
+          },
+          {
+            path: 'menu1-3',
+            component: () => import('@/views/nested/menu1/menu1-3'),
+            name: 'Menu1-3',
+            meta: { title: 'Menu1-3' }
+          }
+        ]
+      },
+      {
+        path: 'menu2',
+        component: () => import('@/views/nested/menu2/index'),
+        name: 'Menu2',
+        meta: { title: 'menu2' }
+      }
+    ]
+  },
 {
       path: '/FM',
       component: Layout,
@@ -238,14 +239,53 @@ export const constantRoutes = [
               meta: { title: '采购管理' }
             },
             {
+              path: 'add',
+              name: 'add',
+              hidden: true,
+              component: () =>
+                import ('@/views/SCM/PurchaseOrder/add'),
+              meta: { title: '添加物料需求计划', icon: 'tree' }
+            },
+            // 此路由用于编辑品牌信息，:id用于接收需要被修改的品牌id
+            {
+              // /brand/edit/123
+              path: 'edit/:id',
+              name: 'edit',
+              // 此路由不需要在页面上显示
+              hidden: true,
+              component: () =>
+                import ('@/views/SCM/PurchaseOrder/add'),
+              meta: { title: '编辑物料需求计划', icon: 'tree' }
+            },
+            {
               path: 'InventoryOrder',
               component: () => import('@/views/SCM/InventoryOrder/index'),
               name: '库存管理',
               meta: { title: '库存管理' }
+            },
+            {
+              path: 'add',
+              name: 'add',
+              hidden: true,
+              component: () =>
+                import ('@/views/SCM/InventoryOrder/add'),
+              meta: { title: '添加库存', icon: 'tree' }
+            },
+            // 此路由用于编辑品牌信息，:id用于接收需要被修改的品牌id
+            {
+              // /brand/edit/123
+              path: 'edit/:id',
+              name: 'edit',
+              // 此路由不需要在页面上显示
+              hidden: true,
+              component: () =>
+                import ('@/views/SCM/InventoryOrder/add'),
+              meta: { title: '编辑库存', icon: 'tree' }
             }
           ]
 
         },
+
         {
               path: '/HRM',
               component: Layout,
@@ -284,40 +324,12 @@ export const constantRoutes = [
                 {
                   path: 'PerformanceReview',
                   component: () => import('@/views/HRM/PerformanceReview/index'),
-                  name: '绩效考核',
-                  meta: { title: '绩效考核' }
+                  name: '职员分布',
+                  meta: { title: '职员分布' }
                 }
               ]
             },
-            {
-                path: '/example',
-                component: Layout,
-                redirect: '/example/tree',
-                name: 'Example',
-                meta: { title: 'Example', icon: 'el-icon-s-help' },
-                children: [
 
-                  {
-                    path: 'tree',
-                    name: 'Tree',
-                    component: () => import('@/views/tree/index'),
-                    meta: { title: 'Tree', icon: 'tree' }
-                  }
-                ]
-              },
-
-              {
-                path: '/form',
-                component: Layout,
-                children: [
-                  {
-                    path: 'index',
-                    name: 'Form',
-                    component: () => import('@/views/form/index'),
-                    meta: { title: 'Form', icon: 'form' }
-                  }
-                ]
-              },
   {
     path: 'external-link',
     component: Layout,

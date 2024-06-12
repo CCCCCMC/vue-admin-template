@@ -19,25 +19,18 @@
         </template>
       </el-table-column>
 
-      <el-table-column label="contactPerson" width="280">
+      <el-table-column label="contactPerson" width="180">
         <template slot-scope="scope">
-          <el-popover trigger="hover" placement="top">
-            <p>首字母: {{ scope.row.letter }}</p>
-            <div slot="reference" class="name-wrapper">
-              <el-tag size="medium">{{ scope.row.contactPerson }}</el-tag>
-            </div>
-          </el-popover>
+          <i class="el-icon-time"></i>
+          <span style="margin-left: 10px">{{ scope.row.contactPerson }}</span>
         </template>
       </el-table-column>
 
+
       <el-table-column label="contactEmail" width="280">
         <template slot-scope="scope">
-          <el-popover trigger="hover" placement="top">
-            <p>首字母: {{ scope.row.letter }}</p>
-            <div slot="reference" class="name-wrapper">
-              <el-tag size="medium">{{ scope.row.contactEmail }}</el-tag>
-            </div>
-          </el-popover>
+          <i class="el-icon-time"></i>
+          <span style="margin-left: 10px">{{ scope.row.contactEmail }}</span>
         </template>
       </el-table-column>
 

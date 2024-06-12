@@ -54,8 +54,8 @@ import BoxCard from './components/BoxCard'
 
 const lineChartData = {
   newVisitis: {
-    expectedData: [100, 120, 161, 134, 105, 160, 165],
-    actualData: [120, 82, 91, 154, 162, 140, 145]
+    expectedData: [33, 33, 34, 34, 34, 34, 34],
+    actualData: [32, 33, 27, 31, 24, 34, 32]
   },
   messages: {
     expectedData: [200, 192, 120, 144, 160, 130, 140],

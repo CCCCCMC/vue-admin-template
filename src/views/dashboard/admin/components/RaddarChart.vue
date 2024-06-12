@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     initChart() {
-      this.chart = echarts.init(this.$el, 'macarons')
+      this.chart = echarts.init(this.$el, 'macarons');
 
       this.chart.setOption({
         tooltip: {
@@ -68,18 +68,18 @@ export default {
             }
           },
           indicator: [
-            { name: 'Sales', max: 10000 },
-            { name: 'Administration', max: 20000 },
-            { name: 'Information Technology', max: 20000 },
-            { name: 'Customer Support', max: 20000 },
-            { name: 'Development', max: 20000 },
-            { name: 'Marketing', max: 20000 }
+            { name: '产品A', max: 20000 },
+            { name: '产品B', max: 20000 },
+            { name: '产品C', max: 20000 },
+            { name: '产品D', max: 20000 },
+            { name: '产品E', max: 20000 },
+            { name: '产品F', max: 20000 }
           ]
         },
         legend: {
           left: 'center',
           bottom: '10',
-          data: ['Allocated Budget', 'Expected Spending', 'Actual Spending']
+          data: ['销售量', '库存量', '生产量']
         },
         series: [{
           type: 'radar',
@@ -95,22 +95,23 @@ export default {
           },
           data: [
             {
-              value: [5000, 7000, 12000, 11000, 15000, 14000],
-              name: 'Allocated Budget'
+              value: [15000, 12000, 18000, 14000, 16000, 18000],
+              name: '生产量'
             },
             {
-              value: [4000, 9000, 15000, 15000, 13000, 11000],
-              name: 'Expected Spending'
+              value: [8000, 9000, 11000, 9500, 10000, 12000],
+              name: '库存量'
             },
             {
-              value: [5500, 11000, 12000, 15000, 12000, 12000],
-              name: 'Actual Spending'
+              value: [12000, 11000, 9000, 10500, 6000, 15000],
+              name: '销售量'
             }
           ],
           animationDuration: animationDuration
         }]
-      })
+      });
     }
+
   }
 }
 </script>
